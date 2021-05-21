@@ -43,7 +43,7 @@ if (isset($_POST['register'])) {
         $query->bindParam("username", $username, PDO::PARAM_STR);
         $result = $query->execute();
         if ($result) {
-            echo '<p class="success">Your registration was successful!</p>';
+            echo '<p class="success">Enregistrement réussi!</p>';
         } else {
             echo '<p class="error">Erreur</p>';
         }
