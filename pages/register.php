@@ -1,4 +1,5 @@
-<form method="post" action="" name="signup-form">
+<form id="form" method="post" action="" name="signup-form">
+<link href="..\css\Accueil.css" rel="stylesheet" type="text/css"/>
     <div class="form-element">
         <label>Nom d'utilisateur</label>
         <input type="text" name="username" pattern="[a-zA-Z0-9]+" required />
@@ -11,6 +12,7 @@
         <label>Mot de passe</label>
         <input type="password" name="password" required />
     </div>
+
     <button type="submit" name="register" value="register">S'enregistrer</button>
 </form>
 
@@ -48,3 +50,5 @@ if (isset($_POST['register'])) {
     }
 }
 ?>
+
+<form> </br><input type="button" onclick="location.href='../Index.html';" value="Retour au site "/></form>
