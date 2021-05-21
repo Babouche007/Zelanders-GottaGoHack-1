@@ -22,14 +22,22 @@ global $db;
 if(isset($_POST['create-activity'])){
     $arr = array('title' => $_POST['title'],'description' => $_POST['description']);
     $info = json_encode($arr);
-    $query = $db->prepare("INSERT INTO activities(info) 
-        VALUES (:info)");
+    $query = $db->prepare("SELECT * FROM activities WHERE info=:info");
     $query->bindParam("info", $info, PDO::PARAM_STR);
-    $result = $query->execute();
-    if ($result) {
-        echo '<p class="success">Activit&eacute; cr&eacute;e avec succ&eacute;s</p>';
-    } else {
-        echo '<p class="error">Quelque chose n&apos;a pas foncionn&eacute;</p>';
+    $query->execute();
+    if ($query->rowCount() > 0) {
+        echo '<p class="error">Activite deja cree</p>';
+    }
+    if ($query->rowCount() == 0){
+        $query = $db->prepare("INSERT INTO activities(info) 
+        VALUES (:info)");
+        $query->bindParam("info", $info, PDO::PARAM_STR);
+        $result = $query->execute();
+        if ($result) {
+            echo '<p class="success">Activit&eacute; cr&eacute;e avec succ&eacute;s</p>';
+        } else {
+            echo '<p class="error">Quelque chose n&apos;a pas foncionn&eacute;</p>';
+        }
     }
 }
 
