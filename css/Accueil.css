@@ -53,11 +53,13 @@ body {
     height: 40px;
 }
 .form-element {
+    display: flex;
     border-radius: 15px;
     font-size: 20px;
     width: 450px;
-    height: 40px;
-    margin-left: 500px
+    height: 30px;
+    margin-left: 500px;
+    justify-content: right;
 }
 #form {
     margin-top: 200px
