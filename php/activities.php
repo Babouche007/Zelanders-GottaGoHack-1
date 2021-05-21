@@ -37,11 +37,8 @@ if(isset($_POST['create-activity'])){
 }
 
 $query = $db->query("SELECT * FROM activities ");
-while($activity = $query->fetch()){ ?>
-    <li>
-        <a href="activities.php?query=<?=activity[id]?>"<?=$activity[title];?>></a>
-    </li>
-<?php }
-
+while($activity = $query->fetch()){
+    echo "title : " . $activity['title'];?><br/><?php
+}
 
 ?>
