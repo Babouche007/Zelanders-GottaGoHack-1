@@ -20,18 +20,21 @@ include '../config.php';
 global $db;
 
 if(isset($_POST['create-activity'])){
-    $arr = array('title' => $_POST['title'],'description' => $_POST['description']);
-    $info = json_encode($arr);
-    $query = $db->prepare("SELECT * FROM activities WHERE info=:info");
-    $query->bindParam("info", $info, PDO::PARAM_STR);
+    $title = $_POST['title'];
+    $description = $_POST['description'];
+    $info = "" ;
+    $query = $db->prepare("SELECT * FROM activities WHERE title=:title");
+    $query->bindParam("title", $title, PDO::PARAM_STR);
     $query->execute();
     if ($query->rowCount() > 0) {
         echo '<p class="error">Activite deja cree</p>';
     }
     if ($query->rowCount() == 0){
-        $query = $db->prepare("INSERT INTO activities(info) 
-        VALUES (:info)");
+        $query = $db->prepare("INSERT INTO activities(title,info,description) 
+        VALUES (:title,:info,:description)");
+        $query->bindParam("title", $title, PDO::PARAM_STR);
         $query->bindParam("info", $info, PDO::PARAM_STR);
+        $query->bindParam("description", $description, PDO::PARAM_STR);
         $result = $query->execute();
         if ($result) {
             echo '<p class="success">Activit&eacute; cr&eacute;e avec succ&eacute;s</p>';
@@ -43,7 +46,7 @@ if(isset($_POST['create-activity'])){
 
 $query = $db->query("SELECT * FROM activities ");
 while($activity = $query->fetch()){
-    echo "info : " . $activity['info'];?><br/><?php
+    echo "Titre : " . $activity['title'] .  " Description : " . $activity['description'];?><br/><?php
 }
 
 ?>
