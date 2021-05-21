@@ -1,6 +1,6 @@
 <form method="post" action="" name="signup-form">
     <div class="form-element">
-        <label>Username</label>
+        <label>Nom d'utilisateur</label>
         <input type="text" name="username" pattern="[a-zA-Z0-9]+" required />
     </div>
     <div class="form-element">
@@ -8,10 +8,10 @@
         <input type="email" name="email" required />
     </div>
     <div class="form-element">
-        <label>Password</label>
+        <label>Mot de passe</label>
         <input type="password" name="password" required />
     </div>
-    <button type="submit" name="register" value="register">Register</button>
+    <button type="submit" name="register" value="register">S'enregistrer</button>
 </form>
 
 <?php
@@ -27,7 +27,7 @@ if (isset($_POST['register'])) {
     $query->bindParam("email", $email, PDO::PARAM_STR);
     $query->execute();
     if ($query->rowCount() > 0) {
-        echo '<p class="error">The email address is already registered!</p>';
+        echo '<p class="error">Email déjà enregistré!</p>';
     }
     if ($query->rowCount() == 0) {
         $id = md5(random_bytes(10));
@@ -43,7 +43,7 @@ if (isset($_POST['register'])) {
         if ($result) {
             echo '<p class="success">Your registration was successful!</p>';
         } else {
-            echo '<p class="error">Something went wrong!</p>';
+            echo '<p class="error">Erreur</p>';
         }
     }
 }
