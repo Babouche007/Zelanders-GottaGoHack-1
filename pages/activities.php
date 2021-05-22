@@ -6,6 +6,8 @@ include '../utils/utils.php';
 include '../utils/tagselection.php';
 global $db;
 
+$string = "";
+
 if(isset($_POST['create-activity']) and utils::IsConnected()){
     if (empty($_POST["title"])) {
         echo '<p class="error">Titre requis</p>';
@@ -18,6 +20,7 @@ if(isset($_POST['create-activity']) and utils::IsConnected()){
         if($author_id){
             $title = $_POST['title'];
             $description = $_POST['description'];
+            $tags = $_POST['others'];
             $idNotFound = true;
             while($idNotFound){
                 $idNotFound = false;
@@ -65,13 +68,11 @@ if(isset($_POST['create-activity']) and utils::IsConnected()){
 elseif (!utils::IsConnected()){
     echo '<p class="error">Vous devez vous connecter avant de pouvoir créer des activités</p>';
 }
-
-
 ?>
 
 
 <!Doctype html>
-<html>
+<html lang="">
 <head>
     <title>Création Activités</title>
 </head>
@@ -81,7 +82,36 @@ elseif (!utils::IsConnected()){
     <div class="box">
         <input type="text" name="title" placeholder="Titre"><br/><br/>
         <input type="text" name="description" placeholder="Description"><br/><br/>
-        <?php $tags = tagselection::add() ?>
+        <?php
+        $arr = array();
+        global $db;
+        $query = $db->query("SELECT * FROM tags ");
+        echo '<form method="POST" action="fenetre.php">';
+        while ($tag = $query->fetch()){
+                echo'
+                    <input type="checkbox" name= '.$tag["name"].' value="on">
+                    <label for= '. $tag["name"] .' > '. $tag["name"] .' </label>';
+        }
+        echo'<input type="checkbox"  name="Autres" value="on">
+             <input type="text" name="others" placeholder="Autres">';
+        echo'</form>';
+        while ($tag = $query->fetch()){
+            if($tag["name"]){
+                $arr[] = $tag['name'];
+            }
+        }
+        $str = "";
+        if(isset($_POST['Autres']) and isset($_POST['others'])){
+            $arr[] = $_POST['others'];
+            $str = $_POST['others'];
+            $res = $db->prepare("INSERT INTO tags (name) VALUES (:name)");
+            $res->bindParam("name", $str, PDO::PARAM_STR);
+            $res->execute();
+        }
+        $name = $str;
+        $_POST['others'] = serialize($arr);
+        ?>
+        </br><br/>
         <button type="submit" name="create-activity" value="create-activity">Créer</button>
         <form> </br><br/><input type="button" onclick="location.href='../index.php';" value="Retour au site "/></form>
     </div>
