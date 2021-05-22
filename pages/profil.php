@@ -4,8 +4,11 @@
     <title>Profil</title>
 </head>
 <body>
-<link href="..\css\Accueil.css" rel="stylesheet" type="text/css"/>
-    
+<form>
+    <link href="..\css\Accueil.css" rel="stylesheet" type="text/css"/>
+    <p id="label_avatar"> <b>Photo de profil </b></p>
+    <img src="../res/img/invis-user.png" alt="avatar de base" width = "300px"></br>
+    <p id="label_param_profil"> <b>Paramètres de profil </b></p>
 </form>
 </body>
 </html>
@@ -38,4 +41,4 @@
     }
 ?>
 
-
+<form> </br><input type="button" onclick="location.href='../pages/activities.php';" value="Ajouter une activité "/></form>
