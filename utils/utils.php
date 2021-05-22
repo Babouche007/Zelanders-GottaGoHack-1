@@ -5,6 +5,6 @@ class utils
 {
     public static function IsConnected(): bool
     {
-        return $_SESSION["user_id"] == true;
+        return array_key_exists("user_id", $_SESSION) && $_SESSION["user_id"] == true;
     }
 }

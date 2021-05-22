@@ -28,7 +28,7 @@ if (isset($_POST['login'])) {
         if (password_verify($password, $result['hash_psswd'])) {
             $_SESSION['user_id'] = $result['id'];
             $_SESSION['username'] = $result['username'];
-            echo '<p class="success">Vous êtes connectés!</p>';
+            echo '<p class="success">Vous êtes connecté!</p>';
         } else {
             echo '<p class="error">Mauvaise combinaison!</p>';
         }
