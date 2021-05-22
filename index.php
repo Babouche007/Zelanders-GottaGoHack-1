@@ -35,7 +35,7 @@
             $profil_link = 'pages/profil.php?id='.$_SESSION["user_id"];
             echo '<ul class="links">
             <li>
-                <a href='.$profil_link.' >'. $_SESSION["username"].'</a>
+                <a href='.$profil_link.' >'. $_SESSION["username"].' |</a>
             </li>
             <li>
                 <a href= ?logout=true> Deconnexion </a>
@@ -52,11 +52,12 @@
 <!--            </li>-->
 <!--        </ul>-->
     </nav>
-    <div>
+    <!--<div class="blur"><img src="res/img/fond1.jpg"></div>-->
+    <div class="content">
         <input type="search" id="search" placeholder="Rechercher un tag…" size="300">
         <button style="height: 30px">Rechercher</button>
     </div>
-
+    <div>
     <div class="top">
         <a href="#top"><img src="res\img\top.png"></a>
     </div>

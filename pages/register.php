@@ -2,19 +2,20 @@
 <link href="..\css\Accueil.css" rel="stylesheet" type="text/css"/>
     <div class="box">
         <div class="form-element">
-            <label>Nom d'utilisateur</label>
-            <input type="text" name="username" pattern="[a-zA-Z0-9]+" required />
+        <!--<label>Nom d'utilisateur</label>-->
+            <input type="text" name="username" pattern="[a-zA-Z0-9]+" placeholder="Nom d'utilisateur" required />
         </div>
         <div class="form-element">
-            <label>Email</label>
-            <input type="email" name="email" required />
+        <!-- <label>Email</label>-->
+           
+            <input type="email" name="email" placeholder="Email" required />
         </div>
         <div class="form-element">
-            <label>Mot de passe</label>
-            <input type="password" name="password" required />
+            <!--<label>Mot de passe</label>-->
+            <input type="password" name="password" placeholder="Mot de passe" required />
         </div>
         <button type="submit" name="register" value="register">S'enregistrer</button>
-        <form> </br><input type="button" onclick="location.href='../index.php';" value="Retour au site "/></form>
+        <form> </br> </br><input type="button" onclick="location.href='../index.php';" value="Retour au site "/></form>
     </div>
 
     

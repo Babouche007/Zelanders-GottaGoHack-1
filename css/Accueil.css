@@ -4,7 +4,7 @@
     position: relative;
     justify-content: space-between;
     align-items: center;
-    background-color: cadetblue;
+    background-color: #0279bb;
 }
 
 .titre {
@@ -44,7 +44,9 @@ body {
     font-size: 25px;
     color: black;
     text-align: center;
-    background: linear-gradient(70deg, #08CFF4, #0012B2);
+    background-image: url("../res/img/fond2.png");
+    background-repeat: no-repeat;
+    background-size: cover;
     /*background: linear-gradient(70deg, #08CFF4, #0012B2);*/
 }
 #search {
@@ -62,7 +64,7 @@ body {
     font-size: 20px;
     width: 450px;
     height: 30px;
-    margin-left: 500px;
+    margin-left: 550px;
     /*justify-content: normal;*/
 }
 .form-element label{
@@ -110,4 +112,26 @@ footer {
     justify-content: center;
     align-items: center;
 
+}*/
+
+/*.blur {
+    position: absolute;
+    z-index: -1;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    background-image: url("../res/img/fond1.jpg");
+    background-size:cover;
+    -webkit-filter: blur(3px);
+    -moz-filter: blur(3px);
+    -o-filter: blur(3px);
+    -ms-filter: blur(3px);
+    filter: blur(3px);
+    }
+.content
+{
+    position: relative;
+    z-index: 2;
+    color: #fff;
 }*/
