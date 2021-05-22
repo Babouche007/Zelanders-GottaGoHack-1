@@ -90,7 +90,7 @@ while($activity = $query->fetch()){
 </head>
 <body>
 <form id="form" method="post" action="" name="login-form">
-<link href="..\css\Accueil.css" rel="stylesheet" type="text/css"/>
+    <link href="..\css\Accueil.css" rel="stylesheet" type="text/css"/>
     <div class="box">
         <input type="text" name="title" placeholder="Titre"><br/>
         <input type="text" name="description" placeholder="Description"><br/>

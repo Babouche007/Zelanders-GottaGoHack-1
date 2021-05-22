@@ -4,34 +4,35 @@
     position: relative;
     justify-content: space-between;
     align-items: center;
-    background-color: #0279bb;
+    background-color: #bee8e5 /*#0279bb*/;
+    box-shadow: -1px 2px 5px 1px black;
 }
 
 .titre {
-    color: white;
+    color: #4058d2;
 }
 .links {
     display: flex;
     margin-left: 40px;
 }
 
-.links a:hover {
-    color: #222427;
-}
+    .links a:hover {
+        color: black;
+    }
 
     .links li {
         list-style: none;
         justify-content: end;
     }
 
-.links a {
-    color: white;
-    text-decoration: none;
-    letter-spacing: 2px;
-    font-weight: bold;
-    font-size: 20px;
-    justify-content: space-around;
-}
+    .links a {
+        color: #4058d2;
+        text-decoration: none;
+        letter-spacing: 2px;
+        font-weight: bold;
+        font-size: 20px;
+        justify-content: space-around;
+    }
 
 .logo {
     height: 60px;
@@ -50,16 +51,22 @@ body {
     /*background: linear-gradient(70deg, #08CFF4, #0012B2);*/
 }
 #accroche {
-    margin-top: 100px;
+    margin-top: 200px;
+    margin-right: 50px;
 }
 #search {
-    margin-top: 20px;
-    margin-bottom: 300px;
+    margin-right: 10px;
     border-radius: 15px;
     border: 1px solid black;
     font-size: 20px;
     width: 450px;
     height: 40px;
+}
+#explication {
+    margin-bottom: 200px;
+    margin-right: 30px;
+    color: dimgrey;
+    font-size: 70%;
 }
 .form-element {
    /* display: flex;*/

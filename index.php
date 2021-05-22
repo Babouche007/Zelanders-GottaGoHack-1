@@ -11,6 +11,7 @@
     <link href="css\Accueil.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8" />
     <title>Giwa</title>
+    <link rel="shortcut icon" type="image/x-icon" href="res/img/logo.png" />
 </head>
 <body>
     <nav class="menu" style="height: 60px;">
@@ -44,11 +45,12 @@
         }
         ?>
     </nav>
-        <p id="accroche"><i>Que voulez - vous faire aujourd'hui ? </i></p></br></br>
+        <p id="accroche"><i>Que voulez - vous faire aujourd'hui ? </i></p></br>
         <input type="search" id="search" placeholder="Rechercher un tag…" size="300">
         <button style="height: 30px">Rechercher</button>
-    </div>
-    <div class="top">
+         <p id="explication"><i>Entrer le nom d'une catégorie afin de pouvoir trouver l'activité dont vous avez envie </i></p></br>
+    
+        <div class="top">
         <a href="#top"><img src="res\img\top.png"></a>
     </div>
 </body>
