@@ -17,7 +17,7 @@
         </div>
         <div class="form-element">
             <!--<label>Mot de passe</label>-->
-            <input type="password" name="password" placeholder="Mot de passe" required />
+            <input type="password" name="password" id= "password" placeholder="Mot de passe" required />
         </div>
         <div class="form-element">
             <!--<label>Mot de passe</label>-->
@@ -40,6 +40,7 @@ if (isset($_POST['register'])) {
     $username = $_POST['username'];
     $email = $_POST['email'];
     $password = $_POST['password'];
+    $cpassword = $_POST['cpassword'];
     $hash_psswd = password_hash($password, PASSWORD_BCRYPT);
     $query = $db->prepare("SELECT * FROM users WHERE email=:email");
     $query->bindParam("email", $email, PDO::PARAM_STR);
@@ -47,7 +48,12 @@ if (isset($_POST['register'])) {
     if ($query->rowCount() > 0) {
         echo '<p class="error">Email déjà enregistré!</p>';
     }
-    if ($query->rowCount() == 0) {
+    if ($password != $cpassword)
+    {
+        echo '<p class="error">Mauvaise confirmation du mot de pass</p>';
+    }
+    else {
+	if ($query->rowCount() == 0) {
         $id = md5(random_bytes(10));
         $created_activities = "{}";
         $query = $db->prepare("INSERT INTO users(id, created_activities, hash_psswd, email, username) 
@@ -67,6 +73,9 @@ if (isset($_POST['register'])) {
             echo '<p class="error">Erreur</p>';
         }
     }
+}
+
+    
 }
 ?>
 
