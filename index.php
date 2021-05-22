@@ -1,5 +1,11 @@
 ﻿<!DOCTYPE html>
 
+<?php
+    include 'utils/utils.php';
+    if (isset($_GET['logout']))
+        utils::DeleteAllCookies();
+?>
+
 <html lang="fr">
 <head>
     <link href="css\Accueil.css" rel="stylesheet" type="text/css" />
@@ -13,7 +19,6 @@
             
         </div>
         <?php
-        include 'utils/utils.php';
         session_start();
         if(!utils::IsConnected()){
             echo '<ul class="links">
@@ -24,10 +29,18 @@
                 <a href="pages/register.php"> Inscription</a>
             </li>
             </ul>';
+
         }
         else{
             $profil_link = 'pages/profil.php?id='.$_SESSION["user_id"];
-            echo '<a href='.$profil_link.' >'. $_SESSION["username"].'</a>';
+            echo '<ul class="links">
+            <li>
+                <a href='.$profil_link.' >'. $_SESSION["username"].'</a>
+            </li>
+            <li>
+                <a href= ?logout=true> Deconnexion </a>
+            </li>
+            </ul>';
         }
         ?>
 <!--        <ul class="links">-->
