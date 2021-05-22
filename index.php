@@ -49,7 +49,20 @@
         <input type="search" id="search" placeholder="Rechercher un tag…" size="300">
         <button style="height: 30px">Rechercher</button>
          <p id="explication"><i>Entrer le nom d'une catégorie afin de pouvoir trouver l'activité dont vous avez envie </i></p></br>
-    
+
+         <div class="separation"> <h1>VOS ACTIVITÉES</h1> </div>
+         <ul class="categorie">
+            
+           <a href="#"><li> Musique </li></a>
+           <a href="#"><li> Jeux Vidéo </li></a>
+           <a href="#"><li> Film / Série </li></a>
+           <a href="#"><li> Sport </li></a>
+           <a href="#"><li> Cuisine </li></a>
+           <a href="#"><li> Aide / Service </li></a>
+           <a href="#"><li> Autres </li></a>
+           <a href="#"><li> Weekly </li></a>
+
+         </ul>
         <div class="top">
         <a href="#top"><img src="res\img\top.png"></a>
     </div>
