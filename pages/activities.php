@@ -7,16 +7,9 @@
 <body>
 
 <form method="post" enctype="multipart/form-data">
-    <input type="text" name="title" placeholder="Title"><br/>
+    <input type="text" name="title" placeholder="Titre"><br/>
     <input type="text" name="description" placeholder="Description"><br/>
-    <ul>
-        <li><button type="submit" name="videoGame" value="videoGame">Jeux Vidéos</button></li>
-        <li><button type="submit" name="music" value="music">Musique</button></li>
-        <li><button type="submit" name="sport" value="sport">Sport</button></li>
-        <li><button type="submit" name="discution" value="discution">Discussion</button></li>
-        <li><button type="submit" name="boardGame" value="boardGame">Jeux de sociétés</button></li>
-        <li><button type="submit" name="cinema" value="cinema">Cinéma</button></li>
-    </ul>
+    <input type="text" name="tags" placeholder="Tags"><br/>
     <button type="submit" name="create-activity" value="create-activity">Créer</button>
 </form>
 </body>
@@ -38,10 +31,11 @@ if(isset($_POST['create-activity'])){
     else{
         $title = $_POST['title'];
         $description = $_POST['description'];
+        $tags = $_POST['tags'];
         $idNotFound = true;
         while($idNotFound){
             $idNotFound = false;
-                $id = md5(random_bytes(10));
+            $id = md5(random_bytes(10));
             $query = $db->prepare("SELECT * FROM activities WHERE id=:id");
             $query->bindParam("id", $id, PDO::PARAM_STR);
             $query->execute();
@@ -57,10 +51,11 @@ if(isset($_POST['create-activity'])){
             echo '<p class="error">Activité déjà créée</p>';
         }
         if ($query->rowCount() == 0){
-            $query = $db->prepare("INSERT INTO activities(id,title,category,info,description) 
-        VALUES (:id,:title,:info,:description)");
+            $query = $db->prepare("INSERT INTO activities(id,title,tags,info,description) 
+        VALUES (:id,:title,:tags,:info,:description)");
             $query->bindParam("id", $id, PDO::PARAM_STR);
             $query->bindParam("title", $title, PDO::PARAM_STR);
+            $query->bindParam("tags",$tags);
             $query->bindParam("info", $info, PDO::PARAM_STR);
             $query->bindParam("description", $description, PDO::PARAM_STR);
             $result = $query->execute();
