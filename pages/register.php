@@ -45,6 +45,8 @@ if (isset($_POST['register'])) {
         if ($result) {
             echo '<p class="success">Enregistrement réussi!</p>';
             $_SESSION['user_id'] = $id;
+            $_SESSION['username'] = $username;
+
         } else {
             echo '<p class="error">Erreur</p>';
         }
@@ -52,4 +54,4 @@ if (isset($_POST['register'])) {
 }
 ?>
 
-<form> </br><input type="button" onclick="location.href='../Index.html';" value="Retour au site "/></form>
+<form> </br><input type="button" onclick="location.href='../index.php';" value="Retour au site "/></form>

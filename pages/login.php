@@ -27,6 +27,7 @@ if (isset($_POST['login'])) {
     } else {
         if (password_verify($password, $result['hash_psswd'])) {
             $_SESSION['user_id'] = $result['id'];
+            $_SESSION['username'] = $result['username'];
             echo '<p class="success">Vous êtes connectés!</p>';
         } else {
             echo '<p class="error">Mauvaise combinaison!</p>';
@@ -35,4 +36,4 @@ if (isset($_POST['login'])) {
 }
 ?>
 
-<form> </br><input type="button" onclick="location.href='../Index.html';" value="Retour au site "/></form>
+<form> </br><input type="button" onclick="location.href='../index.php';" value="Retour au site "/></form>

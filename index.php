@@ -12,14 +12,32 @@
             <h1><img src="res\img\giwa.png" align="left"  class="logo">  &nbsp  Giwa</h1>
             
         </div>
-        <ul class="links">
+        <?php
+        include 'utils/utils.php';
+        session_start();
+        if(!utils::IsConnected()){
+            echo '<ul class="links">
             <li>
-                <a href="pages/login.php">Connexion /</a>
+                <a href="pages/login.php">Connexion |</a>
             </li>
             <li>
                 <a href="pages/register.php"> Inscription</a>
             </li>
-        </ul>
+            </ul>';
+        }
+        else{
+            $profil_link = 'pages/profil.php?id='.$_SESSION["user_id"];
+            echo '<a href='.$profil_link.' >'. $_SESSION["username"].'</a>';
+        }
+        ?>
+<!--        <ul class="links">-->
+<!--            <li>-->
+<!--                <a href="pages/login.php">Connexion /</a>-->
+<!--            </li>-->
+<!--            <li>-->
+<!--                <a href="pages/register.php"> Inscription</a>-->
+<!--            </li>-->
+<!--        </ul>-->
     </nav>
     <div>
         <input type="search" id="search" placeholder="Rechercher un tag…" size="300">
