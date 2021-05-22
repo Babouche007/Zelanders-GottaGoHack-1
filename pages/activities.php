@@ -83,12 +83,11 @@ while($activity = $query->fetch()){
     echo '<p class="separator">---------------------------------</p>';
     echo "Titre : " . $activity['title'] ?><br/><?php
     echo " Description : " . $activity['description'];?><br/><?php
-    $query = $db->prepare("SELECT * FROM users WHERE id=:id");
-    $query->bindParam("id", $_SESSION['user_id'], PDO::PARAM_STR);
-    $query->execute();
-    $result = $query->fetch(PDO::FETCH_ASSOC);
+    $q = $db->prepare("SELECT * FROM users WHERE id=:id");
+    $q->bindParam("id", $activity['author_id'], PDO::PARAM_STR);
+    $q->execute();
+    $result = $q->fetch(PDO::FETCH_ASSOC);
     echo "Author : " .$result['username']; ?><br/><?php
-
 }
 
 ?>
