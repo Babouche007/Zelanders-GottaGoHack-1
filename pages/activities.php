@@ -3,16 +3,8 @@ ob_start();
 session_start();
 include '../config.php';
 include '../utils/utils.php';
+include '../utils/tagselection.php';
 global $db;
-
-function create(){
-    echo'<p>Salut<p/>';
-    global $db;
-    $query = $db->query("SELECT * FROM tags ");
-    while ($tag = $query->fetch()){
-        echo '<option value="'.$tag['name'].'">'. $tag['name'].'</option>';
-    }
-}
 
 if(isset($_POST['create-activity']) and utils::IsConnected()){
     if (empty($_POST["title"])) {
@@ -26,7 +18,6 @@ if(isset($_POST['create-activity']) and utils::IsConnected()){
         if($author_id){
             $title = $_POST['title'];
             $description = $_POST['description'];
-            $tags = $_POST['choice'];
             $idNotFound = true;
             while($idNotFound){
                 $idNotFound = false;
@@ -55,6 +46,10 @@ if(isset($_POST['create-activity']) and utils::IsConnected()){
                 $query->bindParam("info", $info, PDO::PARAM_STR);
                 $query->bindParam("description", $description, PDO::PARAM_STR);
                 $result = $query->execute();
+                echo '<p class="separator">---------------------------------</p>';
+                echo "Titre : " . $title ?><br/><?php
+                echo " Description : " . $description;?><br/><?php
+                echo '<p class="separator">---------------------------------</p>';
                 if ($result) {
                     echo '<p class="success">Activité créée avec succés</p>';
                 } else {
@@ -67,16 +62,8 @@ if(isset($_POST['create-activity']) and utils::IsConnected()){
         }
     }
 }
-$query = $db->query("SELECT * FROM activities ");
-while($activity = $query->fetch()){
-    echo '<p class="separator">---------------------------------</p>';
-    echo "Titre : " . $activity['title'] ?><br/><?php
-    echo " Description : " . $activity['description'];?><br/><?php
-    $q = $db->prepare("SELECT * FROM users WHERE id=:id");
-    $q->bindParam("id", $activity['author_id'], PDO::PARAM_STR);
-    $q->execute();
-    $result = $q->fetch(PDO::FETCH_ASSOC);
-    echo "Author : " .$result['username']; ?><br/><?php
+elseif (!utils::IsConnected()){
+    echo '<p class="error">Vous devez vous connecter avant de pouvoir créer des activités</p>';
 }
 
 
@@ -86,26 +73,17 @@ while($activity = $query->fetch()){
 <!Doctype html>
 <html>
 <head>
-    <title>titre</title>
+    <title>Création Activités</title>
 </head>
 <body>
 <form id="form" method="post" action="" name="login-form">
     <link href="..\css\Accueil.css" rel="stylesheet" type="text/css"/>
     <div class="box">
-        <input type="text" name="title" placeholder="Titre"><br/>
-        <input type="text" name="description" placeholder="Description"><br/>
-        <select type="submit" name="choice" value="choice" onclick="create()">
-            <?php
-            echo'<p>Salut<p/>';
-            global $db;
-            $query = $db->query("SELECT * FROM tags ");
-            while ($tag = $query->fetch()){
-                echo '<option value="'.$tag['name'].'">'. $tag['name'].'</option>';
-            } ?>
-            <option value="Autres">Autres</option>
-        </select><br/>
+        <input type="text" name="title" placeholder="Titre"><br/><br/>
+        <input type="text" name="description" placeholder="Description"><br/><br/>
+        <?php $tags = tagselection::add() ?>
         <button type="submit" name="create-activity" value="create-activity">Créer</button>
-        <form> </br><input type="button" onclick="location.href='../index.php';" value="Retour au site "/></form>
+        <form> </br><br/><input type="button" onclick="location.href='../index.php';" value="Retour au site "/></form>
     </div>
 </form>
 </body>
