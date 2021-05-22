@@ -1,19 +1,23 @@
 <form id="form" method="post" action="" name="signup-form">
 <link href="..\css\Accueil.css" rel="stylesheet" type="text/css"/>
-    <div class="form-element">
-        <label>Nom d'utilisateur</label>
-        <input type="text" name="username" pattern="[a-zA-Z0-9]+" required />
-    </div>
-    <div class="form-element">
-        <label>Email</label>
-        <input type="email" name="email" required />
-    </div>
-    <div class="form-element">
-        <label>Mot de passe</label>
-        <input type="password" name="password" required />
+    <div class="box">
+        <div class="form-element">
+            <label>Nom d'utilisateur</label>
+            <input type="text" name="username" pattern="[a-zA-Z0-9]+" required />
+        </div>
+        <div class="form-element">
+            <label>Email</label>
+            <input type="email" name="email" required />
+        </div>
+        <div class="form-element">
+            <label>Mot de passe</label>
+            <input type="password" name="password" required />
+        </div>
+        <button type="submit" name="register" value="register">S'enregistrer</button>
+        <form> </br><input type="button" onclick="location.href='../index.php';" value="Retour au site "/></form>
     </div>
 
-    <button type="submit" name="register" value="register">S'enregistrer</button>
+    
 </form>
 
 <?php
@@ -54,4 +58,4 @@ if (isset($_POST['register'])) {
 }
 ?>
 
-<form> </br><input type="button" onclick="location.href='../index.php';" value="Retour au site "/></form>
+
