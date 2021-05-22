@@ -12,9 +12,19 @@
     else{
         $result = $query->fetch(PDO::FETCH_ASSOC);
         $username = $result["username"];
+        echo 'Username: '. $username. '<br/>';
+        $query = $db->prepare("SELECT * FROM activities WHERE author_id=:author_id");
+        $query->bindParam("author_id",$id, PDO::PARAM_STR);
+        $query->execute();
+        if($query->rowCount() > 0)
+            echo "Activités: <br/>";
+        else
+            echo "Aucune activité";
+//        $result = $query->fetch(PDO::FETCH_ASSOC);
+        while($activity = $query->fetch()){
+            echo $activity["title"] . '<br/>';
+        }
     }
 ?>
-
-<?php echo $username; ?>
 
 
