@@ -25,7 +25,7 @@ if(isset($_POST['create-activity'])){
         if($author_id){
             $title = $_POST['title'];
             $description = $_POST['description'];
-            $category = $_POST['choice'];
+            $tags = $_POST['choice'];
             $idNotFound = true;
             while($idNotFound){
                 $idNotFound = false;
@@ -45,12 +45,12 @@ if(isset($_POST['create-activity'])){
                 echo '<p class="error">Activité déjà créée</p>';
             }
             if ($query->rowCount() == 0){
-                $query = $db->prepare("INSERT INTO activities(id,author_id,title,categories,info,description) 
-        VALUES (:id,:author_id,:title,:categories,:info,:description)");
+                $query = $db->prepare("INSERT INTO activities(id,author_id,title,tags,info,description) 
+        VALUES (:id,:author_id,:title,:tags,:info,:description)");
                 $query->bindParam("id", $id, PDO::PARAM_STR);
                 $query->bindParam("author_id", $author_id, PDO::PARAM_STR);
                 $query->bindParam("title", $title, PDO::PARAM_STR);
-                $query->bindParam("categories",$category);
+                $query->bindParam("tags",$tags);
                 $query->bindParam("info", $info, PDO::PARAM_STR);
                 $query->bindParam("description", $description, PDO::PARAM_STR);
                 $result = $query->execute();
@@ -92,10 +92,9 @@ while($activity = $query->fetch()){
 </head>
 <body>
 <form id="form" method="post" action="" name="login-form">
-<link href="..\css\Accueil.css" rel="stylesheet" type="text/css"/>
+    <link href="..\css\Accueil.css" rel="stylesheet" type="text/css"/>
     <div class="box">
         <input type="text" name="title" placeholder="Titre"><br/>
-        <input type="text" name="tags" placeholder="Tags"><br/>
         <input type="text" name="description" placeholder="Description"><br/>
         <select type="submit" name="choice" value="choice" onclick="create()">
             <?php
