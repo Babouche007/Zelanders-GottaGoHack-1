@@ -44,9 +44,7 @@ body {
     font-size: 25px;
     color: black;
     text-align: center;
-    background-image: url("../res/img/fond1.jpg");
-    background-repeat: no-repeat;
-    background-size: cover;
+    background: linear-gradient(70deg, #08CFF4, #0012B2);
     /*background: linear-gradient(70deg, #08CFF4, #0012B2);*/
 }
 #search {
@@ -99,17 +97,17 @@ footer {
     text-align: center;
 }
     
-.box {
-    /*width: 1000x;
-    height: 300px;*/
+/*.box {
+    width: 1000x;
+    height: 300px;
     margin-left: auto;
     margin-right: auto;
-    padding: 50px;
-    width: 6em;
+    padding: 60px;
+    width: 1500px;
     float: left;
     background-color: rgb(0, 0, 0);
     opacity: 0.7;
     justify-content: center;
     align-items: center;
-    display:flex;
-}
+
+}*/
