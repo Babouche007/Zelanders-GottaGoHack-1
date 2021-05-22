@@ -2,7 +2,7 @@
 <!Doctype html>
 <html>
 <head>
-    <title>titre</title>
+    <title>activities</title>
 </head>
 <body>
 <form id="form" method="post" action="" name="login-form">

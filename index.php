@@ -44,11 +44,12 @@
         }
         ?>
     </nav>
-        <p id="accroche"><i>Que voulez - vous faire aujourd'hui ? </i></p></br></br>
+        <p id="accroche"><i>Que voulez - vous faire aujourd'hui ? </i></p></br>
         <input type="search" id="search" placeholder="Rechercher un tag…" size="300">
         <button style="height: 30px">Rechercher</button>
-    </div>
-    <div class="top">
+         <p id="explication"><i>Entrer le nom d'une catégorie afin de pouvoir trouver l'activité dont vous avez envie </i></p></br>
+    
+        <div class="top">
         <a href="#top"><img src="res\img\top.png"></a>
     </div>
 </body>

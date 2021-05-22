@@ -1,3 +1,14 @@
+<!Doctype html>
+<html>
+<head>
+    <title>Profil</title>
+</head>
+<body>
+<link href="..\css\Accueil.css" rel="stylesheet" type="text/css"/>
+    
+</form>
+</body>
+</html>
 <?php
     include('../config.php');
     global $db;
