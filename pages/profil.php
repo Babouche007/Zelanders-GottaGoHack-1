@@ -36,16 +36,17 @@
 //        $result = $query->fetch(PDO::FETCH_ASSOC);
 ?>
 <div class="dropdown">
-  <span><?php
+  <?php
         while($activity = $query->fetch()){
-            echo $activity["title"] . '<br/>';
+            ?><span><i><?php echo $activity["title"] . '<br/>';?></i></span>
+            <div class="dropdown-content">
+                <p><?php echo $activity["description"] . '<br/>';?></p>
+              </div>
+            </div><br/><?php
         }
     }
-?></span>
-  <div class="dropdown-content">
-    <p>test</p>
-  </div>
-</div>
+?>
+  
 
 </body>
 </html>
