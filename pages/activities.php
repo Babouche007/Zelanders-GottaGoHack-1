@@ -7,10 +7,13 @@
 <body>
 <form id="form" method="post" action="" name="login-form">
 <link href="..\css\Accueil.css" rel="stylesheet" type="text/css"/>
-    <input type="text" name="title" placeholder="Titre"><br/>
-    <input type="text" name="description" placeholder="Description"><br/>
-    <input type="text" name="tags" placeholder="Tags"><br/>
-    <button type="submit" name="create-activity" value="create-activity">Créer</button>
+    <div class="box">
+        <input type="text" name="title" placeholder="Titre"><br/>
+        <input type="text" name="description" placeholder="Description"><br/>
+        <input type="text" name="tags" placeholder="Tags"><br/>
+        <button type="submit" name="create-activity" value="create-activity">Créer</button>
+        <form> </br><input type="button" onclick="location.href='../index.php';" value="Retour au site "/></form>
+    </div>
 </form>
 </body>
 </html>
@@ -90,4 +93,3 @@ while($activity = $query->fetch()){
 
 ?>
 
-<form> </br><input type="button" onclick="location.href='../index.php';" value="Retour au site "/></form>
