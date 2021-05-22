@@ -102,14 +102,22 @@ elseif (!utils::IsConnected()){
         }
         $str = "";
         if(isset($_POST['Autres']) and isset($_POST['others'])){
-            $arr[] = $_POST['others'];
-            $str = $_POST['others'];
-            $res = $db->prepare("INSERT INTO tags (name) VALUES (:name)");
-            $res->bindParam("name", $str, PDO::PARAM_STR);
-            $res->execute();
+            $response = $db->prepare("SELECT * FROM tags WHERE name=:name");
+            $response->bindParam("name", $str, PDO::PARAM_STR);
+            $response->execute();
+            if ($response->rowCount() == 0) {
+                $arr[] = $_POST['others'];
+                $str = $_POST['others'];
+                $res = $db->prepare("INSERT INTO tags (name) VALUES (:name)");
+                $res->bindParam("name", $str, PDO::PARAM_STR);
+                $res->execute();
+                header('Location: ./activities.php');
+            }
+
         }
         $name = $str;
         $_POST['others'] = serialize($arr);
+
         ?>
         </br><br/>
         <button type="submit" name="create-activity" value="create-activity">Créer</button>
