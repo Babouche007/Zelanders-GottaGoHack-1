@@ -2,14 +2,13 @@
     display: flex;
     padding: 10px;
     position: relative;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     background-color: cadetblue;
 }
 
 .titre {
     color: white;
-    justify-content: left;
 }
 .links {
     display: flex;
@@ -43,7 +42,7 @@ body {
     margin: 0px;
     padding: 0px;
     font-size: 25px;
-    color: white;
+    color: black;
     text-align: center;
     background-image: url("../res/img/fond1.jpg");
     background-repeat: no-repeat;
@@ -51,7 +50,8 @@ body {
     /*background: linear-gradient(70deg, #08CFF4, #0012B2);*/
 }
 #search {
-    margin-top: 100px;
+    margin-top: 300px;
+    margin-bottom: 300px;
     border-radius: 15px;
     border: 1px solid black;
     font-size: 20px;
@@ -79,25 +79,19 @@ body {
     right: 30px;
 }
 
-hr {
-    height: 8px;
-    background-color: cadetblue;
-    border: none;
-}
 .top img {
     width: 33px;
 }
 
 .logo2 {
-    height: 100px;
-    width: 100px;
+    height: 70px;
+    width: 70px;
 }
-foot {
-    padding-bottom: 20px;
-    margin-top: 20px;
+footer {
+    padding: 15px;
     color: white;
     font-size: 15px;
-    /*background-color: #222427;*/
+    background-color: #222427;
     text-align: center;
 }
     
