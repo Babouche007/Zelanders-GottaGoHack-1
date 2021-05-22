@@ -32,6 +32,7 @@ if (isset($_POST['login'])) {
             $_SESSION['user_id'] = $result['id'];
             $_SESSION['username'] = $result['username'];
             echo '<p class="success">Vous êtes connecté!</p>';
+            header("Location: /");
         } else {
             echo '<p class="error">Mauvaise combinaison!</p>';
         }
