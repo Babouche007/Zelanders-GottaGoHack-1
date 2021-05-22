@@ -2,13 +2,15 @@
 <link href="..\css\Accueil.css" rel="stylesheet" type="text/css"/>
     <div class="box">
         <div class="form-element">
-            <input type="text" name="username" pattern="[a-zA-Z0-9]+"  placeholder="Username" required />
+            <label>Username</label>
+            <input type="text" name="username" pattern="[a-zA-Z0-9]+" required />
         </div>
         <div class="form-element">
-            <input type="password" name="password" placeholder="Password" required />
+            <label>Password</label>
+            <input type="password" name="password" required />
         </div>
         <button type="submit" name="login" value="login">Login</button>
-        <form> </br></br><input type="button" onclick="location.href='../index.php';" value="Retour au site "/></form>
+        <form> </br><input type="button" onclick="location.href='../index.php';" value="Retour au site "/></form>
     </div>
 </form>
 
