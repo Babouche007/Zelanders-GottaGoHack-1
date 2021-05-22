@@ -1,4 +1,4 @@
-$(document).ready(function{
-
-    $("#tag").hide();
-});
+function afficher(element) {
+    const text = element.textContent;
+    document.querySelector("#change").setAttribute("src", "pages\\liste.php?query=" + text);
+}

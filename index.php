@@ -12,6 +12,7 @@
     <meta charset="utf-8" />
     <title>Giwa</title>
     <link rel="shortcut icon" type="image/x-icon" href="res/img/logo.png" />
+    <script src="js/iframe.js"></script>
 </head>
 <body>
     <nav class="menu" style="height: 60px;">
@@ -62,21 +63,23 @@
         <div class="separation"> <h1>VOS ACTIVITÉES</h1> </div>
 
         <div id="global">
-        <div id="gauche"><ul class="categorie" id="gauche">
-          
-           <li> <a href="#"> Musique </a></li>
-           <li> <a href="#"> Jeux Vidéo </a> </li>
-           <li> <a href="#"> Film / Série </a> </li>
-           <li><a href="#"> Sport </a> </li>
-           <li><a href="#"> Cuisine </a> </li>
-           <li> <a href="#">Aide / Service </a> </li>
-           <li><a href="#"> Autres </a> </li>
-           <li><a href="#"> Weekly </a> </li>
+        <div id="gauche" style="width: 200px">
+        
+        <ul class="categorie">
+           <li onclick="afficher(this)" style="cursor: pointer";>Musique</li>
+            <li onclick="afficher(this)" style="cursor: pointer";>Jeux Vidéos</li>
+            <li onclick="afficher(this)" style="cursor: pointer";>Films/Séries</li>
+            <li onclick="afficher(this)" style="cursor: pointer";>Sport</li>
+            <li onclick="afficher(this)" style="cursor: pointer";>Cuisine</li>
+            <li onclick="afficher(this)" style="cursor: pointer";>Service</li>
+            <li onclick="afficher(this)" style="cursor: pointer";>Programmation</li>
+            <li onclick="afficher(this)" style="cursor: pointer";>Tous</li>
             </ul> </div>
 
-           <!--<div id="droit"><iframe id="droite" title="Inline Frame Example" width="300" height="200" src="https://www.openstreetmap.org/export/embed.html?bbox=-0.004017949104309083%2C51.47612752641776%2C0.00030577182769775396%2C51.478569861898606&layer=mapnik">
-           </iframe></div>-->
-        </div>
+           <div id="droit"><iframe id="change" title="Musique" width="1000" height="650" src="pages/liste.php?query=Musique">
+           </iframe></div>
+
+           </div>
         <div class="top">
         <a href="#top"><img src="res\img\top.png"></a>
     </div>
