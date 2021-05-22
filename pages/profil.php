@@ -26,6 +26,8 @@
         $result = $query->fetch(PDO::FETCH_ASSOC);
         $username = $result["username"];
         echo 'Username: '. $username. '<br/>';
+        $email = $result["email"];
+        echo 'Email: '. $email. '<br/>';
         $query = $db->prepare("SELECT * FROM activities WHERE author_id=:author_id");
         $query->bindParam("author_id",$id, PDO::PARAM_STR);
         $query->execute();
@@ -47,7 +49,15 @@
     }
 ?>
   
+<form> </br><input type="button" onclick="location.href='../pages/activities.php';" value="Ajouter une activité "/></form>
 
+<?php
+    session_start();
+    if($_SESSION['user_id'] == $id){
+        $userlink = '../pages/user_change.php?id='. $_SESSION['user_id'];
+        echo '<form> </br><input type=button onclick=location.href=\''.$userlink.'\' value="Modifier le profil "/></form>';
+    }
+?>
 </body>
 </html>
-<form> </br><input type="button" onclick="location.href='../pages/activities.php';" value="Ajouter une activité "/></form>
+
