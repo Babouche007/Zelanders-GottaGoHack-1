@@ -1,4 +1,5 @@
-<form method="post" action="" name="login-form">
+<form id="form" method="post" action="" name="login-form">
+<link href="..\css\Accueil.css" rel="stylesheet" type="text/css"/>
     <div class="form-element">
         <label>Username</label>
         <input type="text" name="username" pattern="[a-zA-Z0-9]+" required />
@@ -33,3 +34,5 @@ if (isset($_POST['login'])) {
     }
 }
 ?>
+
+<form> </br><input type="button" onclick="location.href='../Index.html';" value="Retour au site "/></form>
