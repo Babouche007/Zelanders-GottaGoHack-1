@@ -14,6 +14,7 @@
     <div class="box">
         <input type="text" name="title" placeholder="Titre"><br/><br/>
         <input type="text" name="description" placeholder="Description"><br/><br/>
+        <input type="text" name="maxmember" placeholder="Place"><br/><br/>
         <?php
         global $db;
         $tags = "";
@@ -74,6 +75,8 @@ if(isset($_POST['create-activity']) and utils::IsConnected()){
             $title = $_POST['title'];
             $description = $_POST['description']; 
             $tags = $_SESSION['tags'];
+            $member = 1;
+            $maxmember = $_POST['maxmember'];
             $idNotFound = true;
             while($idNotFound){
                 $idNotFound = false;
@@ -93,14 +96,16 @@ if(isset($_POST['create-activity']) and utils::IsConnected()){
                 echo '<p class="error">Activité déjà créée</p>';
             }
             if ($query->rowCount() == 0){
-                $query = $db->prepare("INSERT INTO activities(id,author_id,title,tags,info,description) 
-        VALUES (:id,:author_id,:title,:tags,:info,:description)");
+                $query = $db->prepare("INSERT INTO activities(id,author_id,title,tags,info,description,member,maxmember) 
+        VALUES (:id,:author_id,:title,:tags,:info,:description,:member,:maxmember)");
                 $query->bindParam("id", $id, PDO::PARAM_STR);
                 $query->bindParam("author_id", $author_id, PDO::PARAM_STR);
                 $query->bindParam("title", $title, PDO::PARAM_STR);
                 $query->bindParam("tags",$tags);
                 $query->bindParam("info", $info, PDO::PARAM_STR);
                 $query->bindParam("description", $description, PDO::PARAM_STR);
+                $query->bindParam("member", $member, PDO::PARAM_STR);
+                $query->bindParam("maxmember", $maxmember, PDO::PARAM_STR);
                 $result = $query->execute();
                 echo '<p class="separator">---------------------------------</p>';
                 echo "Titre : " . $title ?><br/><?php
