@@ -44,6 +44,7 @@ if (isset($_POST['register'])) {
         $result = $query->execute();
         if ($result) {
             echo '<p class="success">Enregistrement réussi!</p>';
+            $_SESSION['user_id'] = $id;
         } else {
             echo '<p class="error">Erreur</p>';
         }
