@@ -46,14 +46,23 @@
         ?>
     </nav>
         <p id="accroche"><i>Que voulez - vous faire aujourd'hui ? </i></p></br>
-        <input type="search" id="search" placeholder="Rechercher un tag…" size="300">
-        <button style="height: 30px">Rechercher</button>
-         <p id="explication"><i>Entrer le nom d'une catégorie afin de pouvoir trouver l'activité dont vous avez envie </i></p></br>
+<!--        <input type="search" id="search" placeholder="Rechercher un tag…" size="300">-->
+        <form method="post">
+            <input type="txext" id="search" name="searchinput" placeholder="Rechercher un ou plusieurs tags..." size="300">
+            <input style="height: 30px" id="searchinput" type="submit" name="searchbutton" value="Rechercher"/>
+        </form>
+         <p id="explication"><i>Entrez le nom d'une catégorie afin de pouvoir trouver l'activité dont vous avez envie! </i></p></br>
 
-         <div class="separation"> <h1>VOS ACTIVITÉES</h1> </div>
+        <?php
+            if(isset($_POST["searchbutton"]) or isset($_POST["searchinput"])) {
+                header('Location: /pages/searchresult.php?query='.$_POST["searchinput"]);
+            }
+        ?>
 
-         <div id="global">
-         <div id="gauche"><ul class="categorie" id="gauche">
+        <div class="separation"> <h1>VOS ACTIVITÉES</h1> </div>
+
+        <div id="global">
+        <div id="gauche"><ul class="categorie" id="gauche">
           
            <li> <a href="#"> Musique </a></li>
            <li> <a href="#"> Jeux Vidéo </a> </li>
