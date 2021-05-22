@@ -1,12 +1,65 @@
-<?php
-ob_start();
-session_start();
-include '../config.php';
-include '../utils/utils.php';
-include '../utils/tagselection.php';
-global $db;
+<?php ob_start();
+        session_start();
+        include '../config.php';
+        include '../utils/utils.php';
+        include '../utils/tagselection.php';?>
+<!Doctype html>
+<html lang="">
+<head>
+    <title>Création Activités</title>
+</head>
+<body>
+<form id="form" method="post" action="" name="login-form">
+    <link href="..\css\Accueil.css" rel="stylesheet" type="text/css"/>
+    <div class="box">
+        <input type="text" name="title" placeholder="Titre"><br/><br/>
+        <input type="text" name="description" placeholder="Description"><br/><br/>
+        <?php
+        global $db;
+        $tags = "";
+        $query = $db->query("SELECT * FROM tags ");
+        echo '<form method="POST" action="fenetre.php">';
+        while ($tag = $query->fetch()){
+                echo'
+                    <input type="checkbox" name= '.$tag["name"].' value="on">
+                    <label for= '. $tag["name"] .' > '. $tag["name"] .' </label>';
+        }
+        echo'<input type="checkbox"  name="Autres" value="on">
+             <input type="text" name="others" placeholder="Autres">';
+        echo'</form>';
+        $query = $db->query("SELECT * FROM tags ");
+        while ($tag = $query->fetch()){
+            if(isset($_POST[$tag["name"]])){
+                $tags .= $tag['name'].' ';
+            }
+        }
+        if(isset($_POST['Autres']) and isset($_POST['others'])){
+            $response = $db->prepare("SELECT * FROM tags WHERE name=:name");
+            $response->bindParam("name", $str, PDO::PARAM_STR);
+            $response->execute();
+            $tags .= $_POST['others'];
+            if ($response->rowCount() == 0) {
+                $str = $_POST['others'];
+                $res = $db->prepare("INSERT INTO tags (name) VALUES (:name)");
+                $res->bindParam("name", $str, PDO::PARAM_STR);
+                $res->execute();
+                header('Location: ./activities.php');
+            }
 
-$string = "";
+        }
+        $_SESSION['tags'] = $tags;
+
+        ?>
+        </br><br/>
+        <button type="submit" name="create-activity" value="create-activity">Créer</button>
+        <form> </br><br/><input type="button" onclick="location.href='../index.php';" value="Retour au site "/></form>
+    </div>
+</form>
+</body>
+</html>
+
+<?php
+global $db;
 
 if(isset($_POST['create-activity']) and utils::IsConnected()){
     if (empty($_POST["title"])) {
@@ -19,8 +72,8 @@ if(isset($_POST['create-activity']) and utils::IsConnected()){
         $author_id = $_SESSION['user_id'];
         if($author_id){
             $title = $_POST['title'];
-            $description = $_POST['description'];
-            $tags = $_POST['others'];
+            $description = $_POST['description']; 
+            $tags = $_SESSION['tags'];
             $idNotFound = true;
             while($idNotFound){
                 $idNotFound = false;
@@ -69,60 +122,3 @@ elseif (!utils::IsConnected()){
     echo '<p class="error">Vous devez vous connecter avant de pouvoir créer des activités</p>';
 }
 ?>
-
-
-<!Doctype html>
-<html lang="">
-<head>
-    <title>Création Activités</title>
-</head>
-<body>
-<form id="form" method="post" action="" name="login-form">
-    <link href="..\css\Accueil.css" rel="stylesheet" type="text/css"/>
-    <div class="box">
-        <input type="text" name="title" placeholder="Titre"><br/><br/>
-        <input type="text" name="description" placeholder="Description"><br/><br/>
-        <?php
-        $arr = array();
-        global $db;
-        $query = $db->query("SELECT * FROM tags ");
-        echo '<form method="POST" action="fenetre.php">';
-        while ($tag = $query->fetch()){
-                echo'
-                    <input type="checkbox" name= '.$tag["name"].' value="on">
-                    <label for= '. $tag["name"] .' > '. $tag["name"] .' </label>';
-        }
-        echo'<input type="checkbox"  name="Autres" value="on">
-             <input type="text" name="others" placeholder="Autres">';
-        echo'</form>';
-        while ($tag = $query->fetch()){
-            if($tag["name"]){
-                $arr[] = $tag['name'];
-            }
-        }
-        $str = "";
-        if(isset($_POST['Autres']) and isset($_POST['others'])){
-            $response = $db->prepare("SELECT * FROM tags WHERE name=:name");
-            $response->bindParam("name", $str, PDO::PARAM_STR);
-            $response->execute();
-            if ($response->rowCount() == 0) {
-                $arr[] = $_POST['others'];
-                $str = $_POST['others'];
-                $res = $db->prepare("INSERT INTO tags (name) VALUES (:name)");
-                $res->bindParam("name", $str, PDO::PARAM_STR);
-                $res->execute();
-                header('Location: ./activities.php');
-            }
-
-        }
-        $name = $str;
-        $_POST['others'] = serialize($arr);
-
-        ?>
-        </br><br/>
-        <button type="submit" name="create-activity" value="create-activity">Créer</button>
-        <form> </br><br/><input type="button" onclick="location.href='../index.php';" value="Retour au site "/></form>
-    </div>
-</form>
-</body>
-</html>
