@@ -10,8 +10,7 @@
     <img src="../res/img/invis-user.png" alt="avatar de base" width = "300px"></br>
     <p id="label_param_profil"> <b>Paramètres de profil </b></p>
 </form>
-</body>
-</html>
+
 <?php
     include('../config.php');
     global $db;
@@ -35,10 +34,19 @@
         else
             echo "Aucune activité";
 //        $result = $query->fetch(PDO::FETCH_ASSOC);
+?>
+<div class="dropdown">
+  <span><?php
         while($activity = $query->fetch()){
             echo $activity["title"] . '<br/>';
         }
     }
-?>
+?></span>
+  <div class="dropdown-content">
+    <p>test</p>
+  </div>
+</div>
 
+</body>
+</html>
 <form> </br><input type="button" onclick="location.href='../pages/activities.php';" value="Ajouter une activité "/></form>
