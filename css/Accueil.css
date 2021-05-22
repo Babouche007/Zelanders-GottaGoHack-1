@@ -16,23 +16,23 @@
     margin-left: 40px;
 }
 
-    .links a:hover {
-        color: black;
-    }
+.links a:hover {
+    color: black;
+}
 
-    .links li {
-        list-style: none;
-        justify-content: end;
-    }
+.links li {
+    list-style: none;
+    justify-content: end;
+}
 
-    .links a {
-        color: #4058d2;
-        text-decoration: none;
-        letter-spacing: 2px;
-        font-weight: bold;
-        font-size: 20px;
-        justify-content: space-around;
-    }
+.links a {
+    color: #4058d2;
+    text-decoration: none;
+    letter-spacing: 2px;
+    font-weight: bold;
+    font-size: 20px;
+    justify-content: space-around;
+}
 
 .logo {
     height: 60px;
@@ -78,6 +78,16 @@ body {
     opacity: 0.7;
     
 }
+
+/*#Global #gauche {
+    float: left;
+    width: 60%;
+}
+
+#Global #droite {
+    margin-left: 60%
+}*/
+
 .form-element {
    /* display: flex;*/
     border-radius: 15px;

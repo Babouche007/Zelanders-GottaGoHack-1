@@ -51,18 +51,23 @@
          <p id="explication"><i>Entrer le nom d'une catégorie afin de pouvoir trouver l'activité dont vous avez envie </i></p></br>
 
          <div class="separation"> <h1>VOS ACTIVITÉES</h1> </div>
-         <ul class="categorie">
-            
-           <a href="#"><li> Musique </li></a>
-           <a href="#"><li> Jeux Vidéo </li></a>
-           <a href="#"><li> Film / Série </li></a>
-           <a href="#"><li> Sport </li></a>
-           <a href="#"><li> Cuisine </li></a>
-           <a href="#"><li> Aide / Service </li></a>
-           <a href="#"><li> Autres </li></a>
-           <a href="#"><li> Weekly </li></a>
 
-         </ul>
+         <div id="global">
+         <div id="gauche"><ul class="categorie" id="gauche">
+          
+           <li> <a href="#"> Musique </a></li>
+           <li> <a href="#"> Jeux Vidéo </a> </li>
+           <li> <a href="#"> Film / Série </a> </li>
+           <li><a href="#"> Sport </a> </li>
+           <li><a href="#"> Cuisine </a> </li>
+           <li> <a href="#">Aide / Service </a> </li>
+           <li><a href="#"> Autres </a> </li>
+           <li><a href="#"> Weekly </a> </li>
+            </ul> </div>
+
+           <!--<div id="droit"><iframe id="droite" title="Inline Frame Example" width="300" height="200" src="https://www.openstreetmap.org/export/embed.html?bbox=-0.004017949104309083%2C51.47612752641776%2C0.00030577182769775396%2C51.478569861898606&layer=mapnik">
+           </iframe></div>-->
+        </div>
         <div class="top">
         <a href="#top"><img src="res\img\top.png"></a>
     </div>
