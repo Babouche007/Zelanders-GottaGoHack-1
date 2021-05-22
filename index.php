@@ -11,6 +11,7 @@
     <link href="css\Accueil.css" rel="stylesheet" type="text/css" />
     <meta charset="utf-8" />
     <title>Giwa</title>
+    <link rel="shortcut icon" type="image/x-icon" href="res/img/logo.png" />
 </head>
 <body>
     <nav class="menu" style="height: 60px;">
