@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 
 <!Doctype html>
 <html>
@@ -18,11 +19,22 @@
 </body>
 </html>
 
+=======
+>>>>>>> 56d507686ecc71c33227b9197c24ca15eee3f1fb
 <?php
 ob_start();
 session_start();
 include '../config.php';
 global $db;
+
+function create(){
+    echo'<p>Salut<p/>';
+    global $db;
+    $query = $db->query("SELECT * FROM tags ");
+    while ($tag = $query->fetch()){
+        echo '<option value="'.$tag['name'].'">'. $tag['name'].'</option>';
+    }
+}
 
 if(isset($_POST['create-activity'])){
     if (empty($_POST["title"])) {
@@ -36,7 +48,7 @@ if(isset($_POST['create-activity'])){
         if($author_id){
             $title = $_POST['title'];
             $description = $_POST['description'];
-            $tags = $_POST['tags'];
+            $category = $_POST['choice'];
             $idNotFound = true;
             while($idNotFound){
                 $idNotFound = false;
@@ -56,12 +68,12 @@ if(isset($_POST['create-activity'])){
                 echo '<p class="error">Activité déjà créée</p>';
             }
             if ($query->rowCount() == 0){
-                $query = $db->prepare("INSERT INTO activities(id,author_id,title,tags,info,description) 
-        VALUES (:id,:author_id,:title,:tags,:info,:description)");
+                $query = $db->prepare("INSERT INTO activities(id,author_id,title,categories,info,description) 
+        VALUES (:id,:author_id,:title,:categories,:info,:description)");
                 $query->bindParam("id", $id, PDO::PARAM_STR);
                 $query->bindParam("author_id", $author_id, PDO::PARAM_STR);
                 $query->bindParam("title", $title, PDO::PARAM_STR);
-                $query->bindParam("tags",$tags);
+                $query->bindParam("categories",$category);
                 $query->bindParam("info", $info, PDO::PARAM_STR);
                 $query->bindParam("description", $description, PDO::PARAM_STR);
                 $result = $query->execute();
@@ -77,7 +89,9 @@ if(isset($_POST['create-activity'])){
         }
     }
 }
+if(isset($_POST['refresh-tag'])){
 
+}
 $query = $db->query("SELECT * FROM activities ");
 while($activity = $query->fetch()){
     echo '<p class="separator">---------------------------------</p>';
@@ -90,5 +104,35 @@ while($activity = $query->fetch()){
     echo "Author : " .$result['username']; ?><br/><?php
 }
 
+
 ?>
 
+
+<!Doctype html>
+<html>
+<head>
+    <title>titre</title>
+</head>
+<body>
+<form id="form" method="post" action="" name="login-form">
+<link href="..\css\Accueil.css" rel="stylesheet" type="text/css"/>
+    <div class="box">
+        <input type="text" name="title" placeholder="Titre"><br/>
+        <input type="text" name="tags" placeholder="Tags"><br/>
+        <input type="text" name="description" placeholder="Description"><br/>
+        <select type="submit" name="choice" value="choice" onclick="create()">
+            <?php
+            echo'<p>Salut<p/>';
+            global $db;
+            $query = $db->query("SELECT * FROM tags ");
+            while ($tag = $query->fetch()){
+                echo '<option value="'.$tag['name'].'">'. $tag['name'].'</option>';
+            } ?>
+            <option value="Autres">Autres</option>
+        </select><button type="submit" name="refresh-tag" value="refresh-tag">Rafraichir</button><br/>
+        <button type="submit" name="create-activity" value="create-activity">Créer</button>
+        <form> </br><input type="button" onclick="location.href='../index.php';" value="Retour au site "/></form>
+    </div>
+</form>
+</body>
+</html>
