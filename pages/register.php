@@ -1,3 +1,8 @@
+<!DOCTYPE html>
+<html>
+<body>
+
+
 <form id="form" method="post" action="" name="signup-form">
 <link href="..\css\Accueil.css" rel="stylesheet" type="text/css"/>
     <div class="box">
@@ -13,6 +18,12 @@
         <div class="form-element">
             <!--<label>Mot de passe</label>-->
             <input type="password" name="password" placeholder="Mot de passe" required />
+        </div>
+        <div class="form-element">
+            <!--<label>Mot de passe</label>-->
+            <input type="password" name="cpassword" id="cpassword" placeholder="Confirmer le mot de passe" required />
+
+            <!--<script src="../js/connexion.js"></script>-->
         </div>
         <button type="submit" name="register" value="register">S'enregistrer</button>
         <form> </br> </br><input type="button" onclick="location.href='../index.php';" value="Retour au site "/></form>
@@ -60,3 +71,5 @@ if (isset($_POST['register'])) {
 ?>
 
 
+</body>
+</html> 
