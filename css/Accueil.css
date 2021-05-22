@@ -49,8 +49,11 @@ body {
     background-size: cover;
     /*background: linear-gradient(70deg, #08CFF4, #0012B2);*/
 }
+#accroche {
+    margin-top: 100px;
+}
 #search {
-    margin-top: 300px;
+    margin-top: 20px;
     margin-bottom: 300px;
     border-radius: 15px;
     border: 1px solid black;
