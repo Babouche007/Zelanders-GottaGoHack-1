@@ -197,3 +197,16 @@ footer {
     text-align: center;
     vertical-align: bottom;
 }
+
+#profil{
+    margin-top: 20px;
+    display : inline-block;
+    justify-content : center;
+    list-style: none;
+    width: 200px;
+    height: 50px;
+    background: #629fbe;
+    box-shadow: -1px 2px 5px 1px black;
+    margin-bottom: 6px;
+    color: white;
+}

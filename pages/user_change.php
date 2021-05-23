@@ -72,11 +72,13 @@
             $query = $db->prepare("SELECT * FROM users WHERE email=:email");
             $query->bindParam("email", $email, PDO::PARAM_STR);
         }
-        if (!empty($password)){$password = $_POST['password'];
+        $password = $_POST['password'];
         $hash_psswd = password_hash($password, PASSWORD_BCRYPT);
-        }
-    
         
+    
+        $query = $db->prepare("SELECT * FROM users WHERE email=:email");
+        $query->bindParam("email", $email, PDO::PARAM_STR);
+        $query->execute();
         if ($query->rowCount() > 0) {
             echo '<p class="error">Email déjà enregistré!</p>';
         }
@@ -91,8 +93,8 @@
                 $query->bindParam("hash_psswd", $hash_psswd, PDO::PARAM_STR);
                 $query->bindParam("email", $email, PDO::PARAM_STR);
                 $query->bindParam("username", $username, PDO::PARAM_STR);
-                $result = $query->execute();
-                if ($result) {
+
+                if ($query->execute()) {
                     echo '<p class="success">Enregistrement réussi!</p>';
                     $_SESSION['user_id'] = $id;
                     $_SESSION['username'] = $username;

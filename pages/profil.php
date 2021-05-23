@@ -41,7 +41,7 @@ else{
     <?php
     $t = $query->rowCount();
     while($t>0 AND $activity = $query->fetch()){
-        ?><span><i><?php echo $activity["title"] . '<br/>';?></i></span>
+        ?><div id= 'profil'><span><i><?php echo $activity["title"] . '<br/>';?></i></span></div>
         <div class="dropdown-content">
             <p><?php echo $activity["description"] . '<br/>';?></p>
         </div>
