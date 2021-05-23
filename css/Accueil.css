@@ -17,7 +17,7 @@
 }
 
 .links a:hover {
-    color: black;
+    color: white;
 }
 
 .links li {
@@ -152,15 +152,15 @@ body {
     margin-bottom: 100px;
 }
 
-    .categorie li, .categorie li[active = "false"] {
-        list-style: none;
-        width: 200px;
-        height: 50px;
-        background: #629fbe;
-        box-shadow: -1px 2px 5px 1px black;
-        margin-bottom: 6px;
-        color: white;
-    }
+.categorie li, .categorie li[active = "false"] {
+    list-style: none;
+    width: 200px;
+    height: 50px;
+    background: #629fbe;
+    box-shadow: -1px 2px 5px 1px black;
+    margin-bottom: 6px;
+    color: white;
+}
 .categorie a{
     line-height: 50px;
     color: white;
@@ -180,9 +180,9 @@ body {
     right: 30px;
 }
 
-    .top img {
-        width: 33px;
-    }
+.top img {
+    width: 33px;
+}
 
 .logo2 {
     height: 70px;
