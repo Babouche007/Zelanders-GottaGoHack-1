@@ -14,7 +14,7 @@
     <div class="box">
         <input type="text" name="title" placeholder="Titre"><br/><br/>
         <input type="text" name="description" placeholder="Description"><br/><br/>
-        <input type="text" name="maxmember" placeholder="Place"><br/><br/>
+        <input type="text" name="maxmember" placeholder="NbPlace"><br/><br/>
         <?php
         global $db;
         $tags = "";
