@@ -24,6 +24,7 @@
         session_start();
         if(!utils::IsConnected()){
             echo '<ul class="links">
+
             <li>
                 <a href="pages/login.php">Connexion |</a>
             </li>

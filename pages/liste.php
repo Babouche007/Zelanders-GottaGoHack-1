@@ -18,7 +18,15 @@
 
     foreach ($result as $line)
     {
-        echo "<li><div class='username'><b>"."~"."&nbsp". $line['username'] ."&nbsp"."~"."</b>"."</div><div class='title'><b> ".  $line['title'] .":". "<button id='button'>Rejoindre</button>"."</b></div><div class='description'> " .  $line['description'] . "</div><div class='info'> " . $line['info'] . "</div></li>";
+        if($line['maxmember'] == 0)
+        {
+            echo "<li><div class='username'><b>"."~"."&nbsp". $line['username'] ."&nbsp"."~"."</b>"."</div><div class='title'><b> ".  $line['title'] .":". "<button id='button'>Rejoindre</button>"."</b></div><div class='description'> " .  $line['description'] . "</div><div class='info'> "
+            . $line['info'] . "<p id='member'>"."illimit&eacute;es (".$line['member'].")"."</p>"."</div></li>";
+        }
+        else {
+	        echo "<li><div class='username'><b>"."~"."&nbsp". $line['username'] ."&nbsp"."~"."</b>"."</div><div class='title'><b> ".  $line['title'] .":". "<button id='button'>Rejoindre</button>"."</b></div><div class='description'> " .  $line['description'] . "</div><div class='info'> "
+            . $line['info'] . "<p id='member'><br />".$line['member']."/".$line['maxmember']."</p>"."</div></li>";
+    }
     }
 ?></ul>
 </body>
