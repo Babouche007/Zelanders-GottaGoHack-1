@@ -37,16 +37,16 @@ else{
         echo "Aucune activité";
 //        $result = $query->fetch(PDO::FETCH_ASSOC);
     ?>
-    <div class="dropdown">
     <?php
-    $t = $query->rowCount();
-    while($t>0 AND $activity = $query->fetch()){
-        ?><div id= 'profil'><span><i><?php echo $activity["title"] . '<br/>';?></i></span></div>
+    while($activity = $query->fetch()){
+        ?>
+        <div class="dropdown">
+        <div id= 'profil'><span><i><?php echo $activity["title"] . '<br/>';?></i></span></div>
         <div class="dropdown-content">
             <p><?php echo $activity["description"] . '<br/>';?></p>
         </div>
         </div><br/><?php
-        ++$t;
+
     }
 }
 ?>
