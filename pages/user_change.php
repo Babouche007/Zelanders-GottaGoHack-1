@@ -30,6 +30,7 @@
 </form>
 
 <?php
+    session_start();
     include('../config.php');
     global $db;
 
@@ -67,11 +68,10 @@
     }}
 
     if (isset($_POST['register'])) {
-        if (!empty($name)){$username = $_POST['username'];}
-        if (!empty($email)){$email = $_POST['email'];
-            $query = $db->prepare("SELECT * FROM users WHERE email=:email");
-            $query->bindParam("email", $email, PDO::PARAM_STR);
-        }
+        $username = $_POST['username'];
+        $email = $_POST['email'];
+   
+        
         $password = $_POST['password'];
         $hash_psswd = password_hash($password, PASSWORD_BCRYPT);
         
@@ -85,16 +85,14 @@
         else {
 	        if ($query->rowCount() == 0) {
                 $id = $_GET["id"];
-                $created_activities = "{}";
-                $query = $db->prepare("INSERT INTO users(id, created_activities, hash_psswd, email, username) 
-                VALUES (:id, :created_activities, :hash_psswd, :email, :username)");
-                $query->bindParam("id", $id, PDO::PARAM_STR);
-                $query->bindParam("created_activities", $created_activities, PDO::PARAM_STR);
-                $query->bindParam("hash_psswd", $hash_psswd, PDO::PARAM_STR);
-                $query->bindParam("email", $email, PDO::PARAM_STR);
-                $query->bindParam("username", $username, PDO::PARAM_STR);
+                $q = $db->prepare("UPDATE users SET hash_psswd=:hash_psswd, email=:email, username=:username WHERE id=:id");
+                $q->bindParam("hash_psswd", $hash_psswd, PDO::PARAM_STR);
+                $q->bindParam("email", $email, PDO::PARAM_STR);
+                $q->bindParam("username", $username, PDO::PARAM_STR);
+                $q->bindParam("id", $id, PDO::PARAM_STR);
 
-                if ($query->execute()) {
+
+                if ($q->execute()) {
                     echo '<p class="success">Enregistrement réussi!</p>';
                     $_SESSION['user_id'] = $id;
                     $_SESSION['username'] = $username;

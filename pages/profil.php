@@ -27,12 +27,12 @@ else{
     $username = $result["username"];
     echo 'Username: '. $username. '<br/>';
     $email = $result["email"];
-    echo 'Email: '. $email. '<br/>';
+    echo 'Email: '. $email. '<br/><br/>';
     $query = $db->prepare("SELECT * FROM activities WHERE author_id=:author_id");
     $query->bindParam("author_id",$id, PDO::PARAM_STR);
     $query->execute();
     if($query->rowCount() > 0)
-        echo "Activités: <br/>";
+        echo "<b>Activités: </b><br/>";
     else
         echo "Aucune activité";
 //        $result = $query->fetch(PDO::FETCH_ASSOC);
