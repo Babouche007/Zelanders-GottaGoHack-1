@@ -4,7 +4,7 @@
     position: relative;
     justify-content: space-between;
     align-items: center;
-    background-color: #bee8e5 /*#0279bb*/;
+    background-color: #192638 /*#0279bb*/;
     box-shadow: -1px 2px 5px 1px black;
 }
 
@@ -45,13 +45,15 @@ body {
     font-size: 25px;
     color: black;
     text-align: center;
-    background-image: url("../res/img/fond2.png");
+    background-image: url("../res/img/fond9.png");
     background-repeat: no-repeat;
-    background-size: cover;
+    background-size: 100%;
+    background-position: bottom 100% right 50%;
+    background-color: #18304c;
     /*background: linear-gradient(70deg, #08CFF4, #0012B2);*/
 }
 #accroche {
-    margin-top: 200px;
+    margin-top: 180px;
     margin-right: 50px;
 }
 #search {
@@ -63,9 +65,9 @@ body {
     height: 40px;
 }
 #explication {
-    margin-bottom: 200px;
+    margin-bottom: 220px;
     margin-right: 30px;
-    color: dimgrey;
+    color: black;
     font-size: 70%;
 }
 
@@ -150,24 +152,24 @@ body {
     margin-bottom: 100px;
 }
 
-.categorie li {
-    
-    list-style: none;
-    width: 200px;
-    height: 50px;
-    background: #bee8e5;
-    box-shadow: -1px 2px 5px 1px black;
-    margin-bottom: 6px;
- }
+    .categorie li, .categorie li[active = "false"] {
+        list-style: none;
+        width: 200px;
+        height: 50px;
+        background: #629fbe;
+        box-shadow: -1px 2px 5px 1px black;
+        margin-bottom: 6px;
+        color: white;
+    }
 .categorie a{
     line-height: 50px;
-    color: black;
+    color: white;
     text-decoration: none;
 }
 
-.categorie li:hover {
-    background-color: #2aa39e ;
-    color: white;
+.categorie li:hover, .categorie li[active = "true"] {
+    background-color: #bee8e5;
+    color: black;
 }
 
 .top {

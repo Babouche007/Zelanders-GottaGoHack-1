@@ -60,20 +60,20 @@
             }
         ?>
 
-        <div class="separation"> <h1>VOS ACTIVITÉES</h1> </div>
+        <div class="separation"> <h1>VOS ACTIVITÉS</h1> </div>
 
         <div id="global">
         <div id="gauche" style="width: 200px">
         
         <ul class="categorie">
-           <li onclick="afficher(this)" style="cursor: pointer";>Musique</li>
-            <li onclick="afficher(this)" style="cursor: pointer";>Jeux Vidéos</li>
-            <li onclick="afficher(this)" style="cursor: pointer";>Films/Séries</li>
-            <li onclick="afficher(this)" style="cursor: pointer";>Sport</li>
-            <li onclick="afficher(this)" style="cursor: pointer";>Cuisine</li>
-            <li onclick="afficher(this)" style="cursor: pointer";>Service</li>
-            <li onclick="afficher(this)" style="cursor: pointer";>Programmation</li>
-            <li onclick="afficher(this)" style="cursor: pointer";>Tous</li>
+            <li onclick="afficher(this)" active="true" style="cursor: pointer">Musique</li>
+            <li onclick="afficher(this)" active="false" style="cursor: pointer">Jeux Vidéos</li>
+            <li onclick="afficher(this)" active="false" style="cursor: pointer">Films/Séries</li>
+            <li onclick="afficher(this)" active="false" style="cursor: pointer">Sport</li>
+            <li onclick="afficher(this)" active="false" style="cursor: pointer">Cuisine</li>
+            <li onclick="afficher(this)" active="false" style="cursor: pointer">Service</li>
+            <li onclick="afficher(this)" active="false" style="cursor: pointer">Programmation</li>
+            <li onclick="afficher(this)" active="false" style="cursor: pointer">Tous</li>
             </ul> </div>
 
            <div id="droit"><iframe id="change" title="Musique" width="1000" height="650" src="pages/liste.php?query=Musique">
